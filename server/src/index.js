@@ -18,27 +18,5 @@ server.use('/user', userRoute)
 
 
 
-
-/* //---denna ska in i / routen sen----
-//behövs validering? 
-server.post('/todo', (req, res) => {
-    
-})
-
-//Kan denna bli bättre? kan man göra validering här? 
-server.delete('/todo', (req, res) => {
-    
-})
-
-//funkar okej. Validering?
-server.patch('/todo', (req, res) => {
-
-}) */
-
-//behövs denna?
-server.get('/todo', (req, res) =>{
-
-})
-
 server.listen(1010)
 

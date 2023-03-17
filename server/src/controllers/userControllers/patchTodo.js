@@ -1,3 +1,4 @@
+//funkar okej. Validering?
 const pool = require('../../dbcon')
 
 exports.patchTodo = function patchTodo (req, res) {

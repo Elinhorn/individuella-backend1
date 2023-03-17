@@ -1,4 +1,4 @@
-//login och register vara
+//login och register här
 const express = require('express')
 const authRoute = express.Router()
 const { register } = require('../controllers/authControllers/register')

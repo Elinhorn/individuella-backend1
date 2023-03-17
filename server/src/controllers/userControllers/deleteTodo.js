@@ -1,3 +1,4 @@
+//Kan denna bli bättre? kan man göra validering här? 
 const pool = require('../../dbcon')
     
 exports.deleteTodo = function deleteTodo (req, res) {
