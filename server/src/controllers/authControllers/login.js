@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt')
+const pool = require('../../dbcon')
 
 exports.login = function login (req, res) {    
     const {username, password} = req.body
@@ -22,7 +23,10 @@ exports.login = function login (req, res) {
                 
                 if (isEqual) {
                     res.cookie('loginCookie', 'loggedIn', {
-                        maxAge: 100000
+                        maxAge: 1000000,
+                        sameSite: 'none',
+                        httpOnly: 'true',
+                        secure: 'true',
 
                     })
                     res.status(200).send('Welcome')
