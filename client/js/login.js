@@ -12,10 +12,18 @@ from.addEventListener('submit', async (e) => {
         method: 'POST',
         body: JSON.stringify({username, password}),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            
         },
-        credentials:'include'
+        credentials: 'include'
 
     })
+
+ 
+    if(res.status === 200) {
+        window.location.href = './todo.html'
+    } else {
+        alert('wrong inouts')
+    }
     console.log(res)
 })

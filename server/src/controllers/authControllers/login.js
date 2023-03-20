@@ -6,30 +6,29 @@ exports.login = function login (req, res) {
 
         const findUser = `
         SELECT password, username FROM users WHERE username=?`
-
-    /*     const findUser = `
-        SELECT * FROM users WHERE username=? AND password=? ` */
             pool.execute(findUser, [username], (error, result) => {
             if (error) {
-                console.log(error)
                 res.sendStatus(500)
                 return;
             } 
             
             if (result.length > 0) {
-                //const storedUser = result[0].username // måste jga ha denna?
                 const storedPass = result[0].password
                 const isEqual = bcrypt.compareSync(password, storedPass)
+                
                 
                 if (isEqual) {
                     res.cookie('loginCookie', 'loggedIn', {
                         maxAge: 1000000,
-                        sameSite: 'none',
-                        httpOnly: 'true',
-                        secure: 'true',
+                        sameSite: 'None',
+                        httpOnly: true,
+                        secure: true, 
+                        withCredentials: 'include',
+                        path: "/",
 
                     })
                     res.status(200).send('Welcome')
+                    
                 } else {
                     res.sendStatus(401)
                 }

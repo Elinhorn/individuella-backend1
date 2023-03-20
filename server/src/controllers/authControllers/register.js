@@ -25,7 +25,6 @@ exports.register = function register (req, res) {
             pool.execute(sql, [username, hashedPass], (error, result) => {
                 if (error) {
                     res.status(500).send('username already exist')
-                    console.log(error)
                 } else {
                     res.status(201).send('new user have been added')
                 }

@@ -2,7 +2,7 @@ const joi = require('joi')
 const pool = require('../../dbcon')
 
 exports.postTodo = function postTodo (req, res) {
-    const{todo} = req.body
+    const {todo} = req.body
         const schema = joi.object({
             todo: joi.string().min(2).max(255).required().pattern(RegExp('^[a-zA-Z0-9]'))
         })

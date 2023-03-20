@@ -10,8 +10,17 @@
 <body>
     <form>
         <label>Create todo: </label>
-        <input typ="text">
-        <button>Create</button>
+        <input id="createTodo" typ="text">
+        <button id="addTodo">Create</button>
+        <div id="hiddenDiv" hidden>
+            <label>Change your todo:</label>
+            <input id="updateTodo" type="text">
+            <button id="updateBtn">Update</button>
+        </div>
     </form>
+    <div>
+        <ul id="listDiv">
+        </ul>
+    </div>
 </body>
 </html>
