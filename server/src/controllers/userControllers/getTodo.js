@@ -1,6 +1,3 @@
-//visa alla todos som redan finns i sql
-//get end point
-
 const pool = require('../../dbcon')
 
 exports.getTodo = function getTodo (req, res) {

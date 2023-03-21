@@ -1,15 +1,15 @@
-// GLOBALA VARIABLER *****************
+// Global variables 
 const createTodo = document.querySelector('#createTodo')
 const from = document.querySelector('#addTodo')
 const listDiv = document.querySelector('#listDiv')
 const updateInput = document.querySelector('#updateTodo')
 const updateBtn = document.querySelector('#updateBtn')
 const hiddenDiv = document.querySelector('#hiddenDiv')
-let testTodo = '';
+let testTodo = ''
 let todoList = []
 
 
-// FUNKTIONER ******************
+// Functions 
 function getAllTodos()  {
     fetch('http://localhost:1010/user/todo', {
         method: 'GET',
@@ -32,7 +32,7 @@ function getAllTodos()  {
 function printHTML () {
     listDiv.innerHTML = ''
     for (let i = 0; i < todoList.length; i++) {
-    listDiv.innerHTML += `<li><h3><button class='updateTodoBtn'>Change</button>${todoList[i]}<button class='deleteTodoBtn'>Delete</button></h3></li>`
+    listDiv.innerHTML += `<li><h2><button class='updateTodoBtn'>Change</button>${todoList[i]}<button class='deleteTodoBtn'>Delete</button></h2></li>`
         
     }
     setUpClicks()
@@ -88,11 +88,9 @@ function sendUpdate(e) {
     getAllTodos()
 }
 
-
-
 function handleDeleteClick(e) {
     const todo = e.target.previousSibling.textContent
-    fetch('http://localhost:1010/user/todo', {
+    const res = fetch('http://localhost:1010/user/todo', {
         method: 'DELETE',
         body: JSON.stringify({todo}),
         headers: {
@@ -100,11 +98,13 @@ function handleDeleteClick(e) {
         },
         credentials: 'include'
     })
+
     getAllTodos()
+    
 }
 
 
-// PROGRAM LOGIK ******************
+// Logic
 from.addEventListener('click', async (e) => {
     e.preventDefault()
 
@@ -117,7 +117,23 @@ from.addEventListener('click', async (e) => {
         },
         credentials: 'include'
     })
-    getAllTodos()
+
+    
+    if (res.status === 201) {
+        alert('Todo got added to the list')
+        getAllTodos()
+    } 
+
+    if (res.status === 400) {
+        alert('incorrect input, try again')
+    }
+
+    if (res.status === 500) {
+        alert('This todo already exist')
+    }
+
+    
+    
 })
 
 updateBtn.addEventListener('click', sendUpdate) 

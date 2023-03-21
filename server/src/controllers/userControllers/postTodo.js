@@ -16,9 +16,8 @@ exports.postTodo = function postTodo (req, res) {
                 pool.execute(sql, [todo], (error , result) => {
                     if (error) {
                         res.status(500).send('The todo was too long, please shorten it down')
-                        console.log(error)
                     } else {
-                        res.status(201).send('Todo was created!')
+                        res.status(201).json('Todo was created!')
                     }
             })
         }

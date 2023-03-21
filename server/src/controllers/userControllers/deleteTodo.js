@@ -1,4 +1,3 @@
-//Kan denna bli bättre? kan man göra validering här? 
 const pool = require('../../dbcon')
     
 exports.deleteTodo = function deleteTodo (req, res) {
@@ -10,6 +9,6 @@ exports.deleteTodo = function deleteTodo (req, res) {
                     return res.status(400).send('something went wrong')
                 } 
 
-                res.send('your todo is now deleted')
+                res.status(200).send('your todo is now deleted')
             })
 }

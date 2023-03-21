@@ -15,5 +15,11 @@ from.addEventListener('submit', async (e) => {
             'Content-Type': 'application/json'
         }
     })
-    console.log(res)
+    
+    if(res.status === 201) {
+        alert('User created!')
+        window.location.href = './login.html'
+    } else {
+        alert('Invalid username or password')
+    }
 })

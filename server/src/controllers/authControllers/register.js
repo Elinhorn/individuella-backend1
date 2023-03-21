@@ -2,8 +2,6 @@ const joi = require('joi')
 const bcrypt = require('bcrypt')
 const pool = require('../../dbcon')
 
-
-
 exports.register = function register (req, res) {
     const {username, password} = req.body
     const schema = joi.object({

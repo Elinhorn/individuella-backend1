@@ -16,14 +16,13 @@ from.addEventListener('submit', async (e) => {
             
         },
         credentials: 'include'
-
     })
 
  
     if(res.status === 200) {
         window.location.href = './todo.html'
     } else {
-        alert('wrong inouts')
+        alert('wrong inputs')
     }
-    console.log(res)
+    
 })

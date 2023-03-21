@@ -1,4 +1,3 @@
-//här ska delete, post, patch, get vara
 const express = require('express')
 const userRoute = express.Router()
 const { deleteTodo } = require('../controllers/userControllers/deleteTodo')

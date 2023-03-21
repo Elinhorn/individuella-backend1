@@ -6,21 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="../js/todo.js" type="module"></script>
+    <link rel="stylesheet" href="../style/todo.css">
 </head>
 <body>
-    <form>
-        <label>Create todo: </label>
-        <input id="createTodo" typ="text">
-        <button id="addTodo">Create</button>
-        <div id="hiddenDiv" hidden>
-            <label>Change your todo:</label>
-            <input id="updateTodo" type="text">
-            <button id="updateBtn">Update</button>
+    <div id="wholeTodo">
+        <form>
+            <label>Create todo: </label>
+            <input id="createTodo" typ="text">
+            <button id="addTodo">Create</button>
+            <div id="hiddenDiv" hidden>
+                <label>Change your todo:</label>
+                <input id="updateTodo" type="text">
+                <button id="updateBtn">Update</button>
+            </div>
+        </form>
+        <div id="allTodo">
+            <ul id="listDiv">
+            </ul>
         </div>
-    </form>
-    <div>
-        <ul id="listDiv">
-        </ul>
-    </div>
+    </div>    
 </body>
 </html>
