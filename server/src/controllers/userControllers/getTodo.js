@@ -5,7 +5,7 @@ exports.getTodo = function getTodo (req, res) {
     `SELECT todo FROM todo`
         pool.execute(sql, (error, result) => {
             if (error) {
-                res.status(400).send('something went wrong')
+                res.status(500).send('something went wrong')
                 return 
             } else {
                 res.status(200).json(result)

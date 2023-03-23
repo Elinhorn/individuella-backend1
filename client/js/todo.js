@@ -71,12 +71,12 @@ function handleChangeClick(e) {
     hiddenDiv.style.display = 'block'
 }
 
-function sendUpdate(e) {
+async function sendUpdate(e) {
     e.preventDefault()
     const todo = testTodo;
     const updateTodo = updateInput.value
     const patchTodo = {todo: todo, updateTodo: updateTodo}
-    const res = fetch('http://localhost:1010/user/todo', {
+    const res = await fetch('http://localhost:1010/user/todo', {
         method: 'PATCH',
         body: JSON.stringify(patchTodo),
         headers: {
@@ -84,13 +84,24 @@ function sendUpdate(e) {
         },
         credentials: 'include'
     })
-    hiddenDiv.style.display = 'none'
-    getAllTodos()
+
+    if (res.status === 400) {
+        alert('invalid input')
+    }
+
+    if (res.status === 500) {
+        alert('Todo already exist')
+    }
+
+    if (res.status === 200) {
+        hiddenDiv.style.display = 'none'
+        getAllTodos()
+    }
 }
 
-function handleDeleteClick(e) {
+async function handleDeleteClick(e) {
     const todo = e.target.previousSibling.textContent
-    const res = fetch('http://localhost:1010/user/todo', {
+    const res = await fetch('http://localhost:1010/user/todo', {
         method: 'DELETE',
         body: JSON.stringify({todo}),
         headers: {
@@ -99,7 +110,16 @@ function handleDeleteClick(e) {
         credentials: 'include'
     })
 
-    getAllTodos()
+    if (res.status === 200) {
+        alert(`your todo is now deleted`)
+        getAllTodos()
+    }
+
+    if (res.status === 500) {
+        alert('something went wrong')
+    }
+
+    
     
 }
 
